@@ -1,16 +1,12 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
+const classifyRoutes = require('./routes/classifyRoutes');
 
 const app = express();
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.json({ message: "Number classifictaion API is running" });
-})
+// Use routes
+app.use('/api', classifyRoutes);
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
-});
-
+const PORT = 3000;
+app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
